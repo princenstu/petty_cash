@@ -1,0 +1,54 @@
+-- Added status tables
+
+CREATE TABLE `product_status` (
+  `id` varchar(25) NOT NULL DEFAULT '',
+  `title` varchar (25) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `package_status` (
+  `id` varchar(25) NOT NULL DEFAULT '',
+  `title` varchar (25) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `order_status` (
+  `id` varchar(25) NOT NULL DEFAULT '',
+  `title` varchar (25) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+---Product_category added--
+CREATE TABLE IF NOT EXISTS `product_category` (
+  `category_id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(200) NOT NULL,
+  PRIMARY KEY (`category_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+----packages status---
+ALTER TABLE `packages` ADD `status` VARCHAR( 50 ) NOT NULL AFTER `price` ;
+
+ALTER TABLE `packages` ADD `image` VARCHAR( 250 ) NOT NULL AFTER `status` ;
+
+--Added location to User--
+
+ALTER TABLE  `users` ADD  `location_id` INT NOT NULL AFTER  `password`;
+
+---added product table---
+
+ALTER TABLE `products` ADD `category_id` INT NOT NULL AFTER `status` ;
+
+ALTER TABLE  `products` ADD  `category_id` INT NOT NULL AFTER  `product_id`;
+
+--Order info--
+
+ALTER TABLE  `orders` ADD  `name` VARCHAR( 50 ) NOT NULL AFTER  `order_id` ,
+ADD  `address` VARCHAR( 120 ) NOT NULL AFTER  `name` ,
+ADD  `street_no` VARCHAR( 50 ) NOT NULL AFTER  `address` ,
+ADD  `zip_code` VARCHAR( 50 ) NOT NULL AFTER  `street_no` ,
+ADD  `city` VARCHAR( 50 ) NOT NULL AFTER  `zip_code` ,
+ADD  `country` VARCHAR( 50 ) NOT NULL AFTER  `city` ,
+ADD  `email` VARCHAR( 120 ) NOT NULL AFTER  `country` ,
+ADD  `payment_type` VARCHAR( 12 ) NOT NULL AFTER  `status` ,
+ADD  `created_date` TIMESTAMP NOT NULL AFTER  `payment_type` ,
+ADD  `updated_date` TIMESTAMP NOT NULL AFTER  `created_date`

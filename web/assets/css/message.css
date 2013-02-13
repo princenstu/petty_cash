@@ -1,0 +1,11 @@
+.msg_box {padding:8px 20px 8px 46px;margin-bottom:10px;position:relative;color:#444;overflow:hidden}
+.msg_box img {background-image: url(../img/lga_spr.png);background-repeat:no-repeat;width:9px;height:9px}
+.msg_error {background:#f2cac2 url(../img/error_ico.png) no-repeat 14px center;border:1px solid #ae432e}
+.msg_error img {background-position:-47px 0}
+.msg_info {background:#c2e2f2 url(../img/info_ico.png) no-repeat 14px center;border:1px solid #058dc7}
+.msg_info img {background-position:-47px -18px}
+.msg_ok {background:#d5e5b8 url(../img/ok_ico.png) no-repeat 14px center;border:1px solid #77ab13}
+.msg_ok img {background-position:-47px -9px}
+.msg_alert {background:#faf5c8 url(../img/alert_ico.png) no-repeat 14px center;border:1px solid #e6c26e}
+.msg_alert img {background-position:-47px -27px}
+.msg_box .msg_close {position:absolute;top:2px;right:2px;cursor:pointer}
