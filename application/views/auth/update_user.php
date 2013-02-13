@@ -87,23 +87,7 @@
                             <span class="help-inline validation"><?php echo form_error('status'); ?></span>
                         </div>
                     </div>
-                    <div class="control-group">
-                        <label class="control-label add" for="location">Location</label>
-                        <div class="controls">
-                            <select id="location" name="location">
-                                <?php
-                                foreach($locations as $location)
-                                {?>
 
-                                   <option value="<?php echo $location['location_id']?>" <?php echo ($location['location_id']== $users->location_id)? 'selected="selected"':''?>><?php echo $location['name']?></option>
-
-                                 <?php
-                                }
-
-                                ?>
-                            </select>
-                        </div>
-                    </div>
 
                     <div class="control-group">
                         <div class="controls">

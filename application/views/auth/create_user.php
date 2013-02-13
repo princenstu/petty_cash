@@ -65,6 +65,15 @@
 </div>
 
 <div class="control-group">
+    <label class="control-label add" for="password_confirm">Designation</label>
+
+    <div class="controls">
+        <input type="password" id="password_confirm" name="password_confirm" placeholder="Password Confirm">
+        <span class="help-inline validation"><?php echo form_error('password_confirm'); ?></span>
+    </div>
+</div>
+
+<div class="control-group">
     <label class="control-label add" for="group">Group</label>
     <div class="controls">
         <select id="group" name="group">
@@ -80,22 +89,6 @@
 
         </select>
         <span class="help-inline validation"><?php echo form_error('status'); ?></span>
-    </div>
-</div>
-<div class="control-group">
-    <label class="control-label add" for="location">Location</label>
-    <div class="controls">
-        <select id="location" name="location">
-            <?php
-            foreach($locations as $location)
-            {
-
-                echo "<option value='$location[location_id]'>$location[name]</option>";
-
-            }
-
-            ?>
-            </select>
     </div>
 </div>
 

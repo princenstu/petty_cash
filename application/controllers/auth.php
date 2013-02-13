@@ -70,12 +70,6 @@ class Auth extends Controller
 
                 $this->session->set_flashdata('message', $this->ion_auth->messages());
 
-                    if( $this->session->userdata('group') == 'members'){
-
-                        $this->data['message'] = "You don't have permission to access this page";
-                        $this->session->sess_destroy();
-                        redirect('/', 'refresh');
-                    }
                 redirect('/admin', 'refresh');
             } else {
                 $this->session->set_flashdata('message', $this->ion_auth->errors());
@@ -292,9 +286,6 @@ class Auth extends Controller
 
     function create_user()
     {
-        $this->location = new Locations();
-
-        $this->data['locations'] = $this->location->getLocation();
         $this->data['groups'] = $this->ion_auth_model->getAllGroup();
 
 
@@ -374,9 +365,6 @@ class Auth extends Controller
     function update_user($id)
 
     {
-        $this->location = new Locations();
-
-        $this->data['locations'] = $this->location->getLocation();
         $this->data['groups'] = $this->ion_auth_model->getAllGroup();
         $this->data['users'] = $this->ion_auth->get_user($id);
         $this->data['title'] = "Update User";

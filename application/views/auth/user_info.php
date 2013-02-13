@@ -28,7 +28,6 @@
                         <th>Last Name</th>
                         <th>Email</th>
                         <th>Group</th>
-                        <th>Location</th>
                         <th>Status</th>
                         <th></th>
                     </tr>
@@ -41,7 +40,6 @@
                         <td class="center"><?php echo $user['last_name']?></td>
                         <td class="center"><?php echo $user['email'];?></td>
                         <td class="center"><?php echo  $user['group'];?></td>
-                        <td class="center"><?php echo  $user['location'];?></td>
                         <td><?php echo ($user['active']) ? anchor("auth/deactivate/".$user['id'], 'Active') : anchor("auth/activate/". $user['id'], 'Inactive');?></td>
                         <td class="center">
                             <a class="btn btn-info" href="/auth/update_user/<?php echo $user['id']; ?>">
