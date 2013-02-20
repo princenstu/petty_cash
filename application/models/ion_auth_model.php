@@ -1172,4 +1172,23 @@ class Ion_auth_model extends CI_Model
         return $resultSet->result();
     }
 
+
+    public function getAllUser()
+    {
+     $this->db->select('*');
+     $this->db->from('users');
+     $resultSet = $this->db->get();
+        return $resultSet->result();
+    }
+
+
+    public function getDisburse()
+    {
+        $this->db->select('*');
+        $this->db->from('groups');
+        $resultSet = $this->db->get();
+        return $resultSet->result();
+
+    }
+
 }

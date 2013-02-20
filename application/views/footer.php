@@ -11,6 +11,8 @@
 		</footer>
 
 	</div><!--/.fluid-container-->
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+
 	<script src="/assets/js/jquery-1.7.2.min.js"></script>
 	<!-- jQuery UI -->
 	<script src="/assets/js/jquery-ui-1.8.21.custom.min.js"></script>

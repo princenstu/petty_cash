@@ -37,7 +37,7 @@
     <link href='/assets/css/uploadify.css' rel='stylesheet'>
 
 
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+
 
 
 </head>
@@ -99,6 +99,15 @@
                             class="hidden-tablet"> Dashboard</span></a></li>
                     <li><a class="ajax-link" href="/auth/user_info"><i class="icon-align-justify"></i><span
                             class="hidden-tablet">&nbsp;&nbsp;Users</span></a></li>
+                    <li><a class="ajax-link" href="/admin/companies"><i class="icon-align-justify"></i><span
+                        class="hidden-tablet">&nbsp;&nbsp;Companies</span></a></li>
+                    <li><a class="ajax-link" href="/admin/projects"><i class="icon-align-justify"></i><span
+                        class="hidden-tablet">&nbsp;&nbsp;Insert Project</span></a></li>
+                    <li><a class="ajax-link" href="/admin/cash_memos"><i class="icon-align-justify"></i><span
+                        class="hidden-tablet">&nbsp;&nbsp;Insert Cash memo</span></a></li>
+                    <li><a class="ajax-link" href="/admin/archives"><i class="icon-align-justify"></i><span
+                        class="hidden-tablet">&nbsp;&nbsp;Archives</span></a></li>
+
         <?php } ?>
                 </ul>
 

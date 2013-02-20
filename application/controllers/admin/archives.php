@@ -1,0 +1,73 @@
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+
+include_once __DIR__ . '/../base.php';
+
+class archives extends Base
+{
+    private $uploadedFile;
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->load->library('ion_auth');
+        $this->load->library('form_validation');
+        $this->load->library("pagination");
+        $this->load->library('session');
+        $this->load->model('cashmemo');
+        $this->load->model('archive');
+        $this->load->model('ion_auth_model');
+        $this->load->helper('html');
+        $this->load->helper('language');
+        $this->load->helper('url');
+        $this->layout->setLayout('layout_admin');
+    }
+
+    public function index()
+    {
+        $this->data['cashmemoes'] = $this->archive->getArchive();
+        $this->layout->view('admin/archives/list',$this->data);
+
+    }
+    public function getCashmemoById($id)
+    {
+        $this->data['cashmemoes'] = $this->cashmemo->getCashmemoById($id);
+
+        $this->layout->view('admin/cashmemoes/detail',$this->data);
+
+    }
+    public function add()
+    {       $id=$_POST['memo_id'];
+        $this->saveData();
+        $this->remove($id);
+        $this->redirectToHome();
+        $this->session->set_userdata('success_message','Data Successfully Inserted.');
+        $this->layout->view('admin/cash_memo/detail',$this->data);
+    }
+
+    private function saveData()
+    {
+
+        $data = $this->input->post();
+        //var_dump($data);die;
+        $data['create_date'] = date('Y-m-d H:i:s');
+        $this->archive->create($data);
+        //$this->layout->view('admin/cashmemoes/detail',$this->data);
+        // $this->session->set_userdata('success_message','Data Successfully Inserted.');
+
+    }
+
+    private function redirectToHome()
+    {
+        redirect('admin/archives');
+    }
+    public function remove($id)
+    {
+        $this->data['cashmemo'] = $this->archive->delete($id);
+        // $this->session->set_userdata('success_message','Data Successfully Deleted.');
+        //$this->layout->view('admin/projects/list', $this->data);
+        // redirect('admin/cashmemoes');
+    }
+
+
+}
