@@ -44,16 +44,22 @@ class Cash_memos extends Base
 
     public function add()
     {
-        var_dump($_POST);
+        //var_dump($_POST);
         if (!empty($_POST)) {
 
 
             $this->addValidation();
 
             if ($this->form_validation->run()) {
+                if(isset($_POST['saveprint'])=="saveprint"){
+
+                    $this->saveData();
+                    $this->redirectToPrint();
+                } else{
 
                 $this->saveData();
                 $this->redirectToHome();
+                }
 
             }
 
@@ -64,6 +70,16 @@ class Cash_memos extends Base
         $this->data['projects']=$this->project->getProject();
         $this->layout->view('admin/cash_memo/add2',$this->data);
     }
+
+
+
+
+
+
+
+
+
+
     public function edit($id)
     {
         if (!empty($_POST)) {
@@ -173,6 +189,17 @@ class Cash_memos extends Base
     public function cashMemoReport(){
         var_dump($_POST);die;
     }
+
+    private function redirectToPrint()
+    {
+        $id=$this->db->insert_id();
+
+        $this->data['detailCashmemo'] = $this->cash_memo->detail($id);
+
+        $this->layout->view('admin/cash_memo/detailPrint', $this->data);
+    }
+
+
 
 
 }

@@ -13,31 +13,13 @@ class Archive extends BaseModel
 
     public function create($data)
     {
+       // var_dump($data);die;
         $this->insert($data);
 
     }
 
-//    public function getArchive()
-//    {
-//        $this->db->select('*, projects.name as project_name, companies.name as company_name,
-//                            received.first_name as received_first_name, disbursed.first_name as disbursed_first_name,
-//                             received.last_name as received_last_name, disbursed.last_name as disbursed_last_name');
-//        $this->db->from('archives');
-//        $this->db->join('companies', 'companies.company_id = archives.company_id');
-//        $this->db->join('projects', 'projects.project_id = archives.project_id');
-//        $this->db->join('meta as received', 'received.user_id = archives.received_by');
-//        $this->db->join('meta as disbursed', 'disbursed.user_id = archives.disburesed_by');
-//        $this->db->order_by('archives.archive_id', 'asc');
-//        $resultSet= $this->db->get ();
-//        return $resultSet->result();
-//
-//    }
-
-
     public function getArchive()
-    {
-
-        $stSql = sprintf("SELECT
+    {$stSql = sprintf("SELECT
                       archives.memo_no,
                       archives.memo_id,
                       archives.amount,
@@ -47,8 +29,8 @@ class Archive extends BaseModel
                       archives.create_date,
                       companies.name as company_name,
                       projects.name as project_name,
-                      users.username,
-                      groups.name
+                      groups.name,
+                      users.username
                        from archives
                        INNER
                           JOIN users
@@ -62,6 +44,8 @@ class Archive extends BaseModel
                            INNER
                             JOIN projects
                            ON  projects.project_id=archives.project_id
+
+
                             ");
 
 
@@ -73,13 +57,12 @@ class Archive extends BaseModel
             return false;
         }
     }
-
     public function getCashmemoById($id)
     {
         $this->db->select('*, projects.name as project_name, companies.name as company_name,
                             received.first_name as received_first_name, disbursed.first_name as disbursed_first_name,
                              received.last_name as received_last_name, disbursed.last_name as disbursed_last_name');
-        $this->db->from('archives');
+        $this->db->from('cash_memo');
         $this->db->join('companies', 'companies.company_id = cash_memo.company_id');
         $this->db->join('projects', 'projects.project_id = cash_memo.project_id');
         $this->db->join('users', 'users.id = cash_memo.create_by');
@@ -133,6 +116,68 @@ class Archive extends BaseModel
 
         if ($query->num_rows > 0) {
             return $query->result();
+        }
+    }
+
+    public function save($data,$id)
+    {
+
+        $this->loadTable('cash_memo', 'memo_id');
+
+        $data1=array(
+            'memo_id'=>$data->memo_id,
+            'memo_no'=>$data->memo_no,
+            'amount'=>$data->amount,
+            'purpose'=>$data->purpose,
+            'project_id'=>$data->project_id,
+            'amount_in_words'=>$data->amount_in_words,
+            'disbursed_by'=>$data->disburesed_by,
+            'received_by'=>$data->received_by,
+            'create_by'=>$this->session->userdata('user_id'),
+            'company_id'=>$data->company_id
+        );
+        $this->insert($data1,$id);
+    }
+
+    public function getUnarchive($id)
+    {
+        $stSql = sprintf("SELECT
+                            archives.memo_id,
+                            archives.memo_no,
+                            archives.amount,
+                            archives.purpose,
+                            archives.project_id,
+                            archives.amount_in_words,
+                            archives.create_date,
+                            archives.disburesed_by,
+                            archives.received_by,
+                            archives.company_id,
+                            groups.name as group_name,
+                            users.username,
+                            companies.name,
+                            projects.name as project_name
+                            FROM archives
+                            INNER
+                              JOIN groups
+                                ON groups.id = archives.disburesed_by
+                            INNER
+                              JOIN users
+                                ON users.id = archives.received_by
+                            INNER
+                              JOIN companies
+                                ON companies.company_id = archives.company_id
+                            INNER
+                              JOIN projects
+                                ON projects.project_id = archives.project_id
+                             WHERE archives.memo_id = '$id'");
+
+
+       $query = $this->db->query($stSql);
+       // echo $stSql;die;
+        if ($query->num_rows() > 0) {
+            return $query->row();
+        } else {
+            return false;
         }
     }
 

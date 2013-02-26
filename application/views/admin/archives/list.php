@@ -1,4 +1,4 @@
-
+<?php //var_dump($cashmemoes);die;?>
 <div>
     <ul class="breadcrumb">
         <li><a href="/admin/dashboard">Dashboard</a> <span class="divider">/</span></li>
@@ -41,14 +41,13 @@
                         <td><?php echo $cashmemo->company_name; ?></td>
                         <td><?php echo $cashmemo->project_name; ?></td>
                         <td><?php echo $cashmemo->amount; ?></td>
-                        <td><?php echo $cashmemo->disbursed_first_name.' ', $cashmemo->disbursed_last_name; ?></td>
-                        <td><?php echo $cashmemo->received_first_name.' ', $cashmemo->received_last_name; ?></td>
+                        <td><?php echo $cashmemo->name;//$cashmemo->disbursed_first_name.' ', $cashmemo->disbursed_last_name; ?></td>
+                        <td><?php echo$cashmemo->username; //$cashmemo->received_first_name.' ', $cashmemo->received_last_name; ?></td>
                         <td class="center">
-                            <a class="btn btn-info" href="/admin/cashmemoes/edit/<?php echo $cashmemo->memo_id ?>">
-                                <i class="icon-edit icon-white"></i>
+                            <a class="btn btn-info" href="/admin/archives/unarchive/<?php echo $cashmemo->memo_id ?>" onclick="return confirm('Are You Sure You Want To Detail information of The Cash Memo?')">
+                                <i class="icon-trash icon-white"></i>
                                 Unarchive
                             </a>
-
                         </td>
                     </tr>
 

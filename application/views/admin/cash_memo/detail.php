@@ -70,10 +70,10 @@ $this->load->helper('html');
 
                 </div>
                 <div class="control-group">
-                    <label class="control-label add" for="disbursed_by">Disbursed By</label>
+                    <label class="control-label add" for="disburesed_by">Disbursed By</label>
 
                     <div class="controls">
-                        <label class="control-label add" for="disbursed_by"><input type="hidden" name="disbursed_by"
+                        <label class="control-label add" for="disburesed_by"><input type="hidden" name="disburesed_by"
                                                                                    value="<?php echo $cashmemoes->disbursed_by; ?>"><?php echo $cashmemoes->disbursed_first_name . ' ' . $cashmemoes->disbursed_last_name; ?>
                         </label>
                     </div>

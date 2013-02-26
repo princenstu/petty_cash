@@ -26,6 +26,7 @@ class archives extends Base
     public function index()
     {
         $this->data['cashmemoes'] = $this->archive->getArchive();
+       //var_dump($this->data['cashmemoes']);die;
         $this->layout->view('admin/archives/list',$this->data);
 
     }
@@ -42,14 +43,14 @@ class archives extends Base
         $this->remove($id);
         $this->redirectToHome();
         $this->session->set_userdata('success_message','Data Successfully Inserted.');
-        $this->layout->view('admin/cash_memo/detail',$this->data);
+        $this->layout->view('admin/cashmemoes/detail',$this->data);
     }
 
     private function saveData()
     {
 
         $data = $this->input->post();
-        //var_dump($data);die;
+//        var_dump($data);die;
         $data['create_date'] = date('Y-m-d H:i:s');
         $this->archive->create($data);
         //$this->layout->view('admin/cashmemoes/detail',$this->data);
@@ -68,6 +69,18 @@ class archives extends Base
         //$this->layout->view('admin/projects/list', $this->data);
         // redirect('admin/cashmemoes');
     }
+
+
+    public function unarchive()
+    {
+        $data['memo_id'] = $this->uri->segment(4);
+        $this->data['unarchive']=$this->archive->getUnarchive($data['memo_id']);
+        //var_dump($data);die;
+        $this->data['archives'] = $this->archive->save($this->data['unarchive'], $data['memo_id']);
+        $this->redirectToHome();
+    }
+
+
 
 
 }
