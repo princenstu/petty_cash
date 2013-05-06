@@ -46,7 +46,7 @@
                     <td><?php echo $cashmemo->create_date; ?></td>
 
                     <td class="center">
-                        <a class="btn btn-info" href="/admin/cash_memos/edit/<?php echo $cashmemo->memo_id ?>">
+                        <a class="btn btn-small" href="/admin/cash_memos/edit/<?php echo $cashmemo->memo_id ?>">
                             <i class="icon-edit icon-white"></i>
                             Edit
                         </a>

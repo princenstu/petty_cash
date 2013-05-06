@@ -53,8 +53,6 @@ class archives extends Base
 //        var_dump($data);die;
         $data['create_date'] = date('Y-m-d H:i:s');
         $this->archive->create($data);
-        //$this->layout->view('admin/cashmemoes/detail',$this->data);
-        // $this->session->set_userdata('success_message','Data Successfully Inserted.');
 
     }
 
@@ -65,9 +63,7 @@ class archives extends Base
     public function remove($id)
     {
         $this->data['cashmemo'] = $this->archive->delete($id);
-        // $this->session->set_userdata('success_message','Data Successfully Deleted.');
-        //$this->layout->view('admin/projects/list', $this->data);
-        // redirect('admin/cashmemoes');
+
     }
 
 
@@ -79,8 +75,6 @@ class archives extends Base
         $this->data['archives'] = $this->archive->save($this->data['unarchive'], $data['memo_id']);
         $this->redirectToHome();
     }
-
-
 
 
 }

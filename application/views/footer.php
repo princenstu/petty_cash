@@ -80,7 +80,7 @@
 	<!-- history.js for cross-browser state change on ajax -->
 	<script src="/assets/js/jquery.history.js"></script>
 	<!-- application script for Charisma demo -->
-	<script src="/assets/js/charisma.js"></script>
+	<script src="/assets/js/charisma2.js"></script>
 
 	
 </body>

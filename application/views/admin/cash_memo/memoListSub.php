@@ -4,21 +4,21 @@ $i = 1;
 <thead>
 <tr>
     <th class="sorttable_nosort"><input type="checkbox" class="chSel_all" name="row_sel[]"/></th>
-    <th><a class="sort" href="<?php echo site_url($this->cashmemo->order_work($header_url, 'memo_id', 5, 7)); ?>">Memo
+    <th><a class="sort" href="<?php echo site_url($this->cash_memo->order_work($header_url, 'memo_id', 5, 7)); ?>">Memo
         ID</a></th>
-    <th><a class="sort" href="<?php echo site_url($this->cashmemo->order_work($header_url, 'memo_no', 5, 7)); ?>">Memo
+    <th><a class="sort" href="<?php echo site_url($this->cash_memo->order_work($header_url, 'memo_no', 5, 7)); ?>">Memo
         No</a></th>
-    <th><a class="sort" href="<?php echo site_url($this->cashmemo->order_work($header_url, 'name', 5, 7)); ?>">Company
+    <th><a class="sort" href="<?php echo site_url($this->cash_memo->order_work($header_url, 'name', 5, 7)); ?>">Company
         Name</a></th>
-    <th><a class="sort" href="<?php echo site_url($this->cashmemo->order_work($header_url, 'project_name', 5, 7)); ?>">Project
+    <th><a class="sort" href="<?php echo site_url($this->cash_memo->order_work($header_url, 'project_name', 5, 7)); ?>">Project
         Name</a></th>
-    <th><a class="sort" href="<?php echo site_url($this->cashmemo->order_work($header_url, 'group_name', 5, 7)); ?>">Disbursed</a>
+    <th><a class="sort" href="<?php echo site_url($this->cash_memo->order_work($header_url, 'group_name', 5, 7)); ?>">Disbursed</a>
     </th>
-    <th><a class="sort" href="<?php echo site_url($this->cashmemo->order_work($header_url, 'username', 5, 7)); ?>">Recieved</a>
+    <th><a class="sort" href="<?php echo site_url($this->cash_memo->order_work($header_url, 'username', 5, 7)); ?>">Recieved</a>
     </th>
     <th><a class="sort"
-           href="<?php echo site_url($this->cashmemo->order_work($header_url, 'amount', 5, 7)); ?>">Amount</a></th>
-    <th><a class="sort" href="<?php echo site_url($this->cashmemo->order_work($header_url, 'create_date', 5, 7)); ?>">Create
+           href="<?php echo site_url($this->cash_memo->order_work($header_url, 'amount', 5, 7)); ?>">Amount</a></th>
+    <th><a class="sort" href="<?php echo site_url($this->cash_memo->order_work($header_url, 'create_date', 5, 7)); ?>">Create
         Date</a></th>
 
 </tr>
@@ -41,16 +41,16 @@ if (!empty($items)):
         <td><?php echo $item->create_date; ?></td>
         <td>
             <a href="#" rel="<?php echo $item->memo_id ?>" class="view btn btn-success">View</a>
-            <a class="btn btn-primary" href="/admin/cashmemoes/detail/<?php echo $item->memo_id ?>"
+            <a class="btn btn-primary" href="/admin/cash_memos/getCashmemoById/<?php echo $item->memo_id ?>"
                onclick="return confirm('Are You Sure You Want To Detail information of The Cash Memo?')">
                 <i class="icon-trash icon-white"></i>
                 Detail
             </a>
-            <a class="btn btn-info" href="/admin/cashmemoes/edit/<?php echo $item->memo_id ?>">
+            <a class="btn btn-info" href="/admin/cash_memos/edit/<?php echo $item->memo_id ?>">
                 <i class="icon-edit icon-white"></i>
                 Edit
             </a>
-            <a class="btn btn-danger" href="/admin/cashmemoes/remove/<?php echo $item->memo_id ?>"
+            <a class="btn btn-danger" href="/admin/cash_memos/remove/<?php echo $item->memo_id ?>"
                onclick="return confirm('Are You Sure You Want To Delete The Category?')">
                 <i class="icon-trash icon-white"></i>
                 Delete

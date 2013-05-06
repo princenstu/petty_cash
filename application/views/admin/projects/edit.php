@@ -17,6 +17,8 @@
         <div class="box-content">
             <form enctype="multipart/form-data" id="addcompany" class="form-horizontal" action="" method="post">
                 <input type="hidden" name="project_id" value="<?php echo $project['project_id'] ?>">
+
+
                 <div class="control-group">
                     <label class="control-label add" for="name">Project Name</label>
                     <div class="controls">
@@ -24,6 +26,9 @@
                         <span class="help-inline validation"><?php echo form_error('name'); ?></span>
                     </div>
                 </div>
+
+
+
                 <div class="control-group">
                     <label class="control-label add" for="company_id">Company Name</label>
                     <div class="controls">
@@ -38,6 +43,8 @@
                         </select>
                     </div>
                 </div>
+
+
                 <div class="control-group">
                     <div class="controls">
                         <button type="submit" class="btn btn-primary">Update Project</button>

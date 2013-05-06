@@ -1218,8 +1218,9 @@ select:focus:required:invalid:focus {
   margin-right: 3px;
   margin-left: 0;
 }
-.control-group {
-  margin-bottom: 9px;
+.control-group {float: left;
+
+    margin-right: 20px;
 }
 legend + .control-group {
   margin-top: 18px;
